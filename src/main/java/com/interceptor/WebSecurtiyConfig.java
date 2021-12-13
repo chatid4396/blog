@@ -4,8 +4,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-@Configuration
+//@Configuration
 public class WebSecurtiyConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -29,5 +30,9 @@ public class WebSecurtiyConfig extends WebSecurityConfigurerAdapter {
             .inMemoryAuthentication()
             .withUser("user").password("password").roles("USER");
     }
-
+    
+    @Override
+    public UserDetailsService userDetailsServiceBean() throws Exception {
+        return super.userDetailsServiceBean();
+    }
 }
